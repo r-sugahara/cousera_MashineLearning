@@ -83,8 +83,8 @@ J = sum(-1.*y_onehot.*log(a3) - (1-y_onehot).*log(1-a3),'all')/m +seisokuka ;
 
 
 delta3 = a3-y_onehot;
-% z2 = cat(2,bias,z2);
-Theta2 = Theta2(:,2:end);
+z2 = cat(2,bias,z2);
+% Theta2 = Theta2(:,2:end);
 delta2 = (Theta2.'*delta3.').*sigmoidGradient(z2).';
 
 % disp(size(delta2))
@@ -94,16 +94,16 @@ delta2 = (Theta2.'*delta3.').*sigmoidGradient(z2).';
 % disp(size(a2)) 
 
 
-Theta1_grad = delta2*X; %(:,2:end)
+Theta1_grad = delta2(2:end,:)*X; %(:,2:end)
 Theta1_grad = (1/m)*Theta1_grad;
-Theta2_grad = delta3.'*a2(:,2:end);
+Theta2_grad = delta3.'*a2;
 Theta2_grad = (1/m)*Theta2_grad;
 
-% disp(size(Theta1))
-% disp(size(Theta2))
+disp(size(Theta1))
+disp(size(Theta2))
 
-% disp(Theta1_grad)
-% disp(Theta2_grad)
+disp(size(Theta1_grad))
+disp(size(Theta2_grad))
 
 %
 % Part 3: Implement regularization with the cost function and gradients.

@@ -13,7 +13,14 @@ initial_theta = zeros(size(X, 2), 1);
 costFunction = @(t) linearRegCostFunction(X, y, t, lambda);
 
 % Now, costFunction is a function that takes in only one argument
-options = optimset('MaxIter', 200, 'GradObj', 'on');
+% options = optimset('MaxIter', 200, 'GradObj', 'on');
+options = optimset('PlotFcns','optimplotfval','TolX',1e-7);
+% options = optimset('fzero');
+% 
+% oldopts = optimset('Display','iter','TolX',1e-6);
+% newopts = optimset('PlotFcns','optimplotfval','Display','on');
+% options = optimset(oldopts,newopts);
+options = optimset('fminbnd');
 
 % Minimize using fmincg
 theta = fmincg(costFunction, initial_theta, options);

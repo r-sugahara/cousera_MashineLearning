@@ -54,8 +54,21 @@ error_val   = zeros(m, 1);
 % ---------------------- Sample Solution ----------------------
 
 
+% disp(size(theta))
+% disp(theta)
+% disp(size(X))
 
-
+for i = 1:m
+    [theta] = trainLinearReg(X(1:i,:), y(1:i), lambda);
+    a = X*theta;
+    aval = Xval*theta;
+    
+    error_train(i) = mean((a(1:i)-y(1:i)).^2)/2;
+%     error_val(i) = mean((aval(1:i)-yval(1:i)).^2)/2;
+%     
+        
+%     error_train(i) = mean((a-y).^2)/2;
+    error_val(i) = mean((aval-yval).^2)/2;
 
 
 

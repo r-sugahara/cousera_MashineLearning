@@ -20,14 +20,12 @@ grad = zeros(size(theta));
 %
 
 
+a = X*theta;
 
+J = mean((a - y).^2)/2 + lambda*dot(theta(2:end),theta(2:end))/2/m;
 
-
-
-
-
-
-
+grad(1) = mean((a - y).*X(:,1));
+grad(2:end) = mean((a - y).*X(:,2:end),1).' + lambda/m.*theta(2:end);
 
 
 % =========================================================================

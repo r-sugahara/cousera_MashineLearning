@@ -97,8 +97,15 @@ while ~isempty(email_contents)
     %       str2). It will return 1 only if the two strings are equivalent.
     %
 
+    same = strcmp(str, vocabList);
 
-
+    if sum(same) == 1
+        disp(find(same))
+        word_indices = cat(1,word_indices,find(same));
+    end
+    
+    
+        
 
 
 

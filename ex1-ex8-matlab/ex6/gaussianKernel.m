@@ -16,7 +16,8 @@ sim = 0;
 %
 %
 
-
+bunbo = -1*dot((x1-x2),(x1-x2));
+sim = exp(bunbo/2/sigma.^2);
 
 
 
